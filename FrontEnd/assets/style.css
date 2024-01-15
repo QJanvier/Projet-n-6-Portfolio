@@ -138,9 +138,6 @@ li:hover {
 
 }
 
-.gallery h3 {
-
-}
 #contact {
 	width: 50%;
 margin: auto;
@@ -181,7 +178,7 @@ input[type="submit"]{
 	margin : 2em auto ;
 	width: 180px;
 	text-align: center;
-	border-radius: 60px ;
+	border-radius: 60px;
 }
 
 footer nav ul {
@@ -190,3 +187,45 @@ footer nav ul {
 	margin: 2em
 }
 
+
+/*Filters CSS*/
+.filters {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 35px 0px 50px 0px;
+	gap: 15px;
+	width: 100%;
+}
+
+.filters .btnAll {
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 1.2em;
+	color: white;
+	cursor: pointer;
+	background-color:#1D6154;
+	margin: 0;
+	text-align: center;
+	border-radius: 60px;
+	border: 1px solid #1D6154;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	height: 50px;
+	width: auto;
+	padding: 0px 30px;
+}
+.filters button {
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 1.2em;
+	color: #1D6154;
+	cursor: pointer;
+	background-color: white;
+	text-align: center;
+	border-radius: 60px;
+	border: 1px solid #1D6154;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	height: 50px;
+	width: auto;
+	padding: 0px 30px;
+}
