@@ -31,12 +31,12 @@ getWorks()
 
 /*Get filters*/
 
-const urlCategorie = "http://localhost:5678/api/categories"
+const urlCategory = "http://localhost:5678/api/categories"
 
 
 
 const getFilters = () => {
-    fetch(urlCategorie)
+    fetch(urlCategory)
     .then(res => {
         return res.json();
     })
@@ -50,12 +50,12 @@ const getFilters = () => {
             filterCreate.setAttribute("filtersID", filters.id);
             container.appendChild(filterCreate); 
             const filterBtn = document.querySelectorAll(".filterbtn");
-            filterBtn.forEach(event => {
-                addEventListener("click", () => {
-                    const filtersID = event.getAttribute("filtersID")
-                    applyFilter(filtersID)
-                })
-            })
+            // filterBtn.forEach(event => {
+            //     addEventListener("click", () => {
+            //         const filtersID = event.getAttribute("filtersID")
+            //         applyFilter(filtersID)
+            //     })
+            // })
         })
     }) 
 }
@@ -64,39 +64,40 @@ getFilters()
 
 const gallery = document.querySelector(".gallery");
 
-const applyFilter = (filtersID) => {
-    fetch(urlCategorie)
-        .then(res => {
-            return res.json();
-        })
-        gallery.innerHTML = "";
-        resetFilter();
-        const btn = document.querySelector(`.btn${filtersID}`);
-        btn.classList.add("active");
+// async function callCategory() {
+//     const response = await fetch(urlCategory)
+//     return await response.json()
+// }
 
-        const filteredWorks = work.filter(function (work) {
-            return work.category.id.toString() === filtersID;
-        });
 
-        for (const element of filteredWorks) {
-            const container = document.querySelector(".gallery");
-            const figureCreate = document.createElement("figure");
-            const imgCreate = document.createElement("img")
-            const captionCreate = document.createElement("figcaption")
-            imgCreate.src = work.imageUrl;
-            imgCreate.alt = work.title;
-            captionCreate.textContent = work.title;
-            figureCreate.appendChild(imgCreate);
-            figureCreate.appendChild(captionCreate);
-            container.appendChild(figureCreate);            
-        }
-}
+// async function applyFilter (filtersID) {
+//     const works = await callCategory();
+//         gallery.innerHTML = "";
+//         resetFilter();
+//         const btn = document.querySelector(`.btn${filtersID}`);
+//         btn.classList.add("active");
+//         const filteredWorks = works.filter(function (work) {
+//             return work.category.id.toString() === filtersID;
+//         });
 
-const resetFilter = () => {
-    const filters = document.getElementsByClassName("filters")
-    const parent = filters.parent
-    for (let i = 0; i < parent.length; i++) {
-        const child = parent[i]
-        child.classList.remove("active")
-    }
-}
+//         for (const element of filteredWorks) {
+//             const container = document.querySelector(".gallery");
+//             const figureCreate = document.createElement("figure");
+//             const imgCreate = document.createElement("img");
+//             const captionCreate = document.createElement("figcaption");
+//             imgCreate.src = work.imageUrl;
+//             imgCreate.alt = work.title;
+//             captionCreate.textContent = work.title;
+//             figureCreate.appendChild(imgCreate);
+//             figureCreate.appendChild(captionCreate);
+//             container.appendChild(figureCreate);            
+//         }
+// }
+
+// const resetFilter = () => {
+//     const filters = document.getElementsByClassName("filters");
+//     for (let i = 0; i < filters.length; i++) {
+//         const child = filters[i]
+//         child.classList.remove("active")
+//     }
+// }
