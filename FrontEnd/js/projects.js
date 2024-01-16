@@ -51,10 +51,9 @@ const getFilters = () => {
             container.appendChild(filterCreate); 
             const filterBtn = document.querySelectorAll(".filterbtn");
             filterBtn.forEach(event => {
-                event.addEventListener("click", () => {
+                addEventListener("click", () => {
                     const filtersID = event.getAttribute("filtersID")
-                    .applyfilter(filtersID)
-                    console.log(event)
+                    applyFilter(filtersID)
                 })
             })
         })
@@ -63,6 +62,7 @@ const getFilters = () => {
 
 getFilters()
 
+const gallery = document.querySelector(".gallery");
 
 const applyFilter = (filtersID) => {
     fetch(urlCategorie)
@@ -95,7 +95,7 @@ const applyFilter = (filtersID) => {
 const resetFilter = () => {
     const filters = document.getElementsByClassName("filters")
     const parent = filters.parent
-    for (let i = 0; i <parent.length; i++) {
+    for (let i = 0; i < parent.length; i++) {
         const child = parent[i]
         child.classList.remove("active")
     }

@@ -266,6 +266,7 @@ ul a {
 
 .input_fields {
 	min-width: 400px;
+	min-height: 51px;
 }
 
 .login h2 {
@@ -273,7 +274,7 @@ ul a {
 }
 
 .login p {
-	margin-bottom: 50px;
+	margin-bottom: 10px;
 }
 
 #emailInput, #passwordInput {
@@ -281,7 +282,7 @@ ul a {
 	background-color: white;
 	box-shadow: 5px 5px 9px -4px rgba(0, 0, 0, 0.2);
 	width: 100%;
-	height: 30px;
+	height: 51px;
 	margin-bottom: 20px;
 }
 
