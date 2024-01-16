@@ -46,13 +46,19 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+a {
+	text-decoration: none;
+	color: black;
+	cursor: pointer;
+}
 /** end reset css**/
 body {
 	max-width: 1140px;
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
-	background-color: #fffef8;
+	background-color: #fffef9;
 }
 header {
 	display: flex;
@@ -94,9 +100,8 @@ nav ul {
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
-	cursor: pointer;
 }
-
+a:hover,
 li:hover {
 	color: #B1663C;
 }
@@ -142,7 +147,7 @@ li:hover {
 
 #contact {
 	width: 50%;
-margin: auto;
+	margin: auto;
 }
 #contact > * {
 	text-align: center;
@@ -205,23 +210,7 @@ footer nav ul {
 	width: 100%;
 }
 
-.filters .btnAll {
-	font-family: 'Syne';
-	font-weight: 700;
-	font-size: 1.2em;
-	color: white;
-	cursor: pointer;
-	background-color:#1D6154;
-	margin: 0;
-	text-align: center;
-	border-radius: 60px;
-	border: 1px solid #1D6154;
-	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
-	height: 50px;
-	width: auto;
-	padding: 0px 30px;
-}
-.filters button {
+.filters .btn {
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 1.2em;
@@ -245,13 +234,6 @@ footer nav ul {
 .active {
 	background-color: #1D6154;
 	color: white;
-}
-
-/*temporary*/
-
-ul a {
-	text-decoration: none;
-	color: black;
 }
 
 
@@ -296,4 +278,10 @@ ul a {
 .login a {
 	color: #3D3D3D;
 	margin-bottom: 150px;
+}
+
+#error {
+	color: red;
+	font-weight: bold;
+	text-align: center;
 }
