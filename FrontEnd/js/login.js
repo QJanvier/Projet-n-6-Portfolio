@@ -1,5 +1,3 @@
-const url = "http://localhost:5678/api"
-
 const username = document.getElementById('emailInput');
 const password = document.getElementById('passwordInput');
 const form = document.getElementsByClassName('.login');
@@ -7,7 +5,6 @@ const error = document.getElementById('error');
 
 form.addEventListener("submit", async function (event) {
     event.preventDefault();
-
     const data = {
         email: username.value,
         password: password.value,

@@ -9,9 +9,14 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<script src="https://kit.fontawesome.com/ae12630872.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <header>
+	<div class="edition offline">
+		<i class="fa-regular fa-pen-to-square"></i>
+		<p>Mode édition</p>
+	</div>
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
@@ -35,7 +40,13 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<div class="projects">
+			<h2>Mes Projets</h2>
+			<div class="modify offline">
+				<i class="fa-regular fa-pen-to-square"></i>
+				<a href="#" id="editionBtn">modifier</a>
+			</div>
+		</div>
 		<div class="filters">
 			<button class="btnAll btn">Tous</button>
 		</div>
@@ -55,7 +66,46 @@
 		</form>
 	</section>
 </main>
-
+	<dialog id="modal" >
+		<form action="#" method="dialog">
+			<div class="modal_nav">
+				<button class="close"><i class="fa-solid fa-xmark"></i></button>
+			</div>
+			<h3>Galerie photo</h3>
+			<div id="modalGallery"></div>
+			<hr>
+			<div class="modal_btn">
+				<input type="submit" id="btnAddPhoto" value="Ajouter une photo">
+			</div>
+		</form>
+	</dialog>
+	<dialog id="addModal">
+		<form id="addPhotoModal">
+			<div class="modal_nav">
+				<button class="close1"><i class="fa-solid fa-xmark"></i></button>
+			</div>
+			<h3>Ajout Photo</h3>
+			<div id="inputAddPhoto">
+				<i class="fa-regular fa-image"></i>
+				<input type="file" name="image" id="addPhoto">
+				<button id="btnSelectFile"> +Ajouter une image</button>
+				<img src="#" alt="Aperçu de l'image selectionnée" id="selectedFile">
+				<p>jpg,png : 4Mo max</p>
+			</div>
+			<div class="title">
+				<p>Titre</p>
+				<input type="text" name="title" id="addTitle">
+			</div>
+			<div class="category">
+				<p class="categoryText">Catégorie</p>
+				<select name="category" id="addCategory">
+					<option value="1">Objets</option>
+					<option value="2">Appartements</option>
+					<option value="3">Hotels et restaurants</option>
+				</select>
+			</div>
+		</form>
+	</dialog>
 <footer>
 	<nav>
 		<ul>
@@ -64,5 +114,6 @@
 	</nav>
 </footer>
 <script src="js/projects.js"></script>
+<script src="js/modale.js"></script>
 </body>
 </html>
