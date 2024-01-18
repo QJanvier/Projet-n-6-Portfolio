@@ -22,6 +22,17 @@ btnAddPhoto.addEventListener("click", function() {
     addModal.showModal()
 });
 
+
+/*return modal */
+const returnModal = document.getElementById("return")
+
+returnModal.addEventListener("click", function() {
+    dialog.showModal()
+    addModal.close()
+    getWorksModal()
+})
+
+
 /*Close modal*/
 const btnClose = document.querySelector(".close")
 const btnClose1 = document.querySelector(".close1")
@@ -103,3 +114,73 @@ async function deleteWork (id) {
         console.log("Suppresion annulée par l'utilisateur.");
     }
 }
+
+
+
+
+/*Add photo*/
+const form = document.getElementById("addPhotoModal")
+const addedPhoto = document.getElementById("addPhoto")
+const addedTitle = document.getElementById("addTitle")
+const addedCategory = document.getElementById("addCategory")
+const validateBtn = document.getElementById("validateBtn")
+
+validateBtn.addEventListener("click", async function (event) {
+    event.preventDefault();
+
+    if (addedPhoto.value !== "" && addedTitle.value !== "" && addedCategory.value !== "") {
+        if (userToken !== null) {
+            const jsonToken = JSON.parse(userToken)
+            const token = jsonToken.token;
+
+            if (confirm(`Voulez-vous vraiment ajouter le projet ?`)) {
+                try {
+                    const response = await fetch(`http://localhost:5678/api/works`, {
+                        method: "POST",
+                        headers: {"Autorization": `Bearer ${token}`},
+                        body: new FormData(form)
+                    })
+                    if (response.ok) {
+                        console.log("Succès")
+                        form.rest()
+                        imagePreview.src=""
+                        imagePreview.style.display="none"
+                        gallery.innerHTML=""
+                        getWorks()
+                } else {
+                    console.log("Erreur")
+                }
+            } catch (error) {
+                console.error("Erreur lors de la requête :", error)
+            }
+        }
+    } else {
+        alert("Veuillez remplir tous les champs");
+    }
+    }
+});
+
+
+/*change input style */
+const imageInput = document.getElementById("addPhoto")
+const selectFile = document.getElementById("btnSelectFile")
+const imagePreview = document.getElementById("selectedFile")
+
+selectFile.addEventListener("click", function(event) {
+    event.preventDefault()
+    imageInput.click()
+})
+
+imageInput.addEventListener("change", function() {
+    const selectedFile = imageInput.files[0]
+    if(selectedFile) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            imagePreview.src = event.target.result;
+            imagePreview.style.display = "block"
+        }
+        reader.readAsDataURL(selectedFile)
+    }
+})
+
+
