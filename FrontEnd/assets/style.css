@@ -338,6 +338,7 @@ footer nav ul {
 	padding: 0;
 	border: none;
 	border-radius: 10px;
+	padding: 15px;
 	width: clamp(500px, 70%, 700px);
 }
 
@@ -349,6 +350,7 @@ footer nav ul {
 .modal_nav {
 	display: flex;
 	flex-direction: row-reverse;
+	align-items: center;
 	padding-right: 25px;
 	height: 60px;
 	
@@ -358,6 +360,8 @@ footer nav ul {
 .close1 {
 	font-size: large;
 	cursor: pointer;
+	border: none;
+	background-color: white;
 }
 #modal h3,
 #addModal h3 {
@@ -365,11 +369,6 @@ footer nav ul {
 	font-weight: 400;
 	margin: 20px;
 	font-size: 26px;
-}
-
-.close {
-	border: none;
-	background-color: white;
 }
 
 .modal_btn {
@@ -414,6 +413,12 @@ footer nav ul {
 }
 /*Modal Photo*/
 
+.add_nav {
+	flex-direction: row;
+	justify-content: space-between;
+	padding-left: 25px;
+}
+
 #inputAddPhoto {
 	display: flex;
 	flex-direction: column;
@@ -422,39 +427,60 @@ footer nav ul {
 	width: 80%;
 	height: 250px;
 	margin: auto;
-	margin-bottom: 20px;
+	margin-bottom: 35px;
 	background-color: #e8F1F6;
 }
+
 
 .title,
 .category {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
 	margin-bottom: 20px;
+	width: 80%;
 }
 
+.title p,
+.category p {
+	margin-bottom: 10px;
+	font-family: 'Work Sans';
+	font-weight: 500;
+}
 #addTitle,
 #addCategory {
 	display: flex;
-	width: 80%;
-	height: 30px;
+	font-family: 'Work Sans';
+	width: 100%;
+	height: 51px;
 	margin: auto;
+	box-shadow: 0px 4px 14px 0px #00000017;
+	background: #FFFFFF;
+	border: none;
+	
 }
 
+#addCategory {
+	margin-bottom: 35px;
+	
+}
 .fa-image {
 	font-size: 80px;
-	margin-top: 10px;
-	color: grey;
+	color: #CBD6DC;
+	margin-bottom: 10px;
 }
 
 #inputAddphoto p{
-	margin-bottom: 20px;
+	margin-bottom: 10px;
+	font-size: 10px;
+	font-family: 'Work Sans';
 }
 
-.categoryText {
-	text-align: center;
+.allInput {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 #addPhoto {
@@ -475,7 +501,22 @@ footer nav ul {
 	border: none;
 	border-radius: 60px;
 	padding: 10px;
-	margin-right: 10px;
-	margin-bottom: 2em;
+	margin-bottom: 15px;
+	cursor: pointer;
+	width: 173px;
+	height: 36px;
+}
+
+#validateBtn {
+	background-color: #A7A7A7;
+}
+
+hr {
+	width: 80%;
+	color: #A7A7A7;
+}
+
+.fa-arrow-left {
+	font-size:x-large;
 	cursor: pointer;
 }

@@ -81,39 +81,48 @@
 	</dialog>
 	<dialog id="addModal">
 		<form id="addPhotoModal">
-			<div class="modal_nav">
+			<div class="modal_nav add_nav">
+				<i class="fa-solid fa-arrow-left" id="return"></i>
 				<button class="close1"><i class="fa-solid fa-xmark"></i></button>
 			</div>
 			<h3>Ajout Photo</h3>
 			<div id="inputAddPhoto">
 				<i class="fa-regular fa-image"></i>
 				<input type="file" name="image" id="addPhoto">
-				<button id="btnSelectFile"> +Ajouter une image</button>
+				<button id="btnSelectFile"> + Ajouter photo</button>
 				<img src="#" alt="Aperçu de l'image selectionnée" id="selectedFile">
 				<p>jpg,png : 4Mo max</p>
 			</div>
-			<div class="title">
-				<p>Titre</p>
-				<input type="text" name="title" id="addTitle">
+			<div class="allInput">
+				<div class="title">
+					<p>Titre</p>
+					<input type="text" name="title" id="addTitle">
+				</div>
+				<div class="category">
+					<p class="categoryText">Catégorie</p>
+					<select name="category" id="addCategory">
+						<option value="1">Objets</option>
+						<option value="2">Appartements</option>
+						<option value="3">Hotels et restaurants</option>
+					</select>
+				</div>
 			</div>
-			<div class="category">
-				<p class="categoryText">Catégorie</p>
-				<select name="category" id="addCategory">
-					<option value="1">Objets</option>
-					<option value="2">Appartements</option>
-					<option value="3">Hotels et restaurants</option>
-				</select>
-			</div>
-		</form>
-	</dialog>
-<footer>
-	<nav>
-		<ul>
-			<li>Mentions Légales</li>
-		</ul>
-	</nav>
-</footer>
-<script src="js/projects.js"></script>
-<script src="js/modale.js"></script>
-</body>
-</html>
+			<hr>
+				<div class="modal_btn">
+					<input type="submit" id="validateBtn" value="Valider">
+				</div>
+			</form>
+		</dialog>
+	<footer>
+		<nav>
+			<ul>
+				<li>Mentions Légales</li>
+			</ul>
+		</nav>
+	</footer>
+	<script src="js/projects.js"></script>
+	<script src="js/modale.js"></script>
+	</body>
+	</html>
+
+				
