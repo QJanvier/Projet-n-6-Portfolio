@@ -20,6 +20,7 @@ editionBtn.addEventListener("click",function() {
 
 btnAddPhoto.addEventListener("click", function() {
     addModal.showModal()
+    dialog.close()
 });
 
 
@@ -103,7 +104,7 @@ async function deleteWork (id) {
             if (response.ok) {
                 console.log("Projet supprimé avec succès");
                 gallery.innerHTML=""
-                getWorks()/*importer la fonction depuis projects.js*/
+                getWorks()
             } else {
                 console.error("Une erreur s'est produite lors de la suppresion du projet.");
             }
@@ -184,3 +185,32 @@ imageInput.addEventListener("change", function() {
 })
 
 
+/*edition mode*/
+const userToken = window.localStorage.getItem("userToken");
+const logOutBtn = document.querySelector(".logOutBtn");
+const loginBtn = document.querySelector(".loginBtn");
+const editionBanner = document.querySelector(".edition");
+const filterDiv = document.querySelector(".filters");
+const modifyBtn = document.querySelector(".modify");
+
+if (userToken !== null) {
+    enableEdition();
+    logOutBtn.addEventListener("click", disableEdition);
+}
+
+function enableEdition() {
+    logOutBtn.classList.remove("offline");
+    editionBanner.classList.remove("offline");
+    modifyBtn.classList.remove("offline");
+    loginBtn.classList.add("offline");
+    filterDiv.classList.add("offline");
+}
+
+function disableEdition() {
+    window.localStorage.removeItem('userToken');
+    logOutBtn.classList.add("offline");
+    editionBanner.classList.add("offline");
+    modifyBtn.classList.add("offline");
+    loginBtn.classList.remove("offline");
+    filterDiv.classList.remove("offline");
+}

@@ -46,26 +46,20 @@ getWorks()
 
 async function getFilters() {
     const category = await callCategory()
-    for (let i=0; i < category.length; i++) {/*insert filters*/
-        const filters = category[i];
-        const container = document.querySelector(".filters");
-        const allFilters = document.createElement("button");
-        allFilters.classList =`filterbtn btn${filters.id}`;
-        allFilters.setAttribute("id", filters.id);
-        allFilters.innerHTML=`${filters.name}`;
-        container.appendChild(allFilters);
+    const container = document.querySelector(".filters");
+    category.forEach(filters => {
+    const allFilters = document.createElement("button");
+    allFilters.classList = `filterbtn btn${filters.id}`;
+    allFilters.setAttribute("id", filters.id);
+    allFilters.innerHTML = filters.name;
+    container.appendChild(allFilters); 
 
-    }
+        allFilters.addEventListener("click", () => {
+        const filtersID = filters.id;
+        applyFilter(filtersID);
+        });
+    });
 }
-
-/*sorti de la fonction le temps de trouver comment résoudre le ciblage des boutons L84*/
-const filterBtn = document.querySelectorAll(".filterbtn") /*filter*/
-filterBtn.forEach(event => {
-    addEventListener("click", () => {
-        const filtersID = event.getAttribute("id")
-        applyFilter(filtersID)
-    })
-})
 
 getFilters()
 
@@ -81,11 +75,11 @@ async function applyFilter (filtersID) {
     const works = await callWorks();
         gallery.innerHTML = "";
         resetFilter();
-        const btn = document.querySelector(`.btn${filtersID}`);/*ciblage a gerer pour faire fonctionner les filtres */
+        const btn = document.querySelector(`.btn${filtersID}`);
         console.log(btn)
-        btn.classList.add("active");
+        btn.classList.add(".active");
         const filteredWorks = works.filter(function (work) {
-            return work.category.id.toString() === filtersID;
+            return work.categoryId === filtersID;
         });
 
         for (const element of filteredWorks) {
