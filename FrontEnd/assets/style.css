@@ -95,12 +95,20 @@ nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
+	gap: 20px;
 
 }
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 }
+
+nav img {
+	height: 22px;
+	width: 22px;
+	
+}
+
 a:hover,
 li:hover {
 	font-weight: 700;
@@ -310,8 +318,7 @@ footer nav ul {
 	height: 50px;
 	gap: 10px;
 	color: white;
-	background-color: black;
-	
+	background-color: black;	
 }
 
 .projects {
@@ -326,9 +333,9 @@ footer nav ul {
 	gap: 10px;
 }
 
-/* .offline {
+.offline {
 	display: none;
-} */
+}
 
 
 /*Modale*/

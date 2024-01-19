@@ -1,22 +1,20 @@
-const username = document.getElementById('emailInput');
-const password = document.getElementById('passwordInput');
-const form = document.getElementsByClassName('.login');
+const form = document.getElementById('login');
 const error = document.getElementById('error');
 
 form.addEventListener("submit", async function (event) {
     event.preventDefault();
-    const data = {
-        email: username.value,
-        password: password.value,
-    }
-    const payload = JSON.stringify(data)
+    let email = document.getElementById('emailInput').value
+    let password = document.getElementById('passwordInput').value   
 
     const loginResponse = await fetch("http://localhost:5678/api/users/login", {
-        method: 'post',
+        method: 'POST',
         headers: {
             'Content-type': 'application/json'
         },
-        body: payload,
+        body: JSON.stringify({
+            email: email,
+            password: password
+        }),
     })
 
     if (loginResponse.status==200) {
