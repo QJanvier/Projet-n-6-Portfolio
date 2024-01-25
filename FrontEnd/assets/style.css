@@ -338,7 +338,7 @@ footer nav ul {
 
 /*Modale*/
 
-#modal,
+#modal ,
 #addModal {
 	padding: 0;
 	border: none;
@@ -350,6 +350,10 @@ footer nav ul {
 #modal::backdrop,
 #addModal::backdrop {
 	background-color: rgba(0, 0, 0, 0.5);
+}
+
+#modalDiv {
+	padding: 150px;
 }
 
 .modal_nav {

@@ -19,6 +19,7 @@ form.addEventListener("submit", async function (event) {
 
     if (loginResponse.status==200) {
         const loginResponseJSON = await loginResponse.json()
+        console.log(loginResponseJSON)
         const token = loginResponseJSON.token
         const userId = loginResponseJSON.userId
         const userToken = {
@@ -26,7 +27,9 @@ form.addEventListener("submit", async function (event) {
             token:`${token}`
         }
         const userTokenValue = JSON.stringify(userToken)
+        console.log(userTokenValue)
         window.localStorage.setItem("userToken",userTokenValue)
+        console.log(window.localStorage.getItem("userToken"))
         window.location.href="index.html"
     }
     else if (loginResponse.status==404) {
