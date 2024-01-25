@@ -38,13 +38,20 @@ returnModal.addEventListener("click", function() {
 const btnClose = document.querySelector(".close")
 const btnClose1 = document.querySelector(".close1")
 
-btnClose.addEventListener("click", function() {
-    dialog.closest()
+btnClose.addEventListener("click", function(event) {
+    event.preventDefault();
+    dialog.close()
 })
-btnClose1.addEventListener("click", function() {
+btnClose1.addEventListener("click", function(event) {
+    event.preventDefault();
     addModal.close()
 })
 
+// dialog.addEventListener('click', (event) => {
+//     if (event.target.id !== 'modal::backdrop') {
+//         dialog.close();
+//     }
+// });
 
 /*Add works to modal Gallery */
 let modalWorks = []
@@ -70,7 +77,8 @@ async function getWorksModal () {
         <i class="fa-solid fa-trash-can"></i>`
         works.appendChild(trashIcon)
 
-        trashIcon.addEventListener("click", function() {
+        trashIcon.addEventListener("click", function(event) {
+            event.preventDefault();
             if (confirm("Voulez-vous vraiment supprimer le projet ?")) {
                 deleteWork(element.id)
             try {
@@ -93,7 +101,7 @@ async function getWorksModal () {
 
 async function deleteWork (id) {
     if (userToken !== null) {
-        const jsonToken = Json.parse(userToken);
+        const jsonToken = JSON.parse(userToken);
         const token = jsonToken.token;
 
         try {
@@ -112,7 +120,7 @@ async function deleteWork (id) {
             console.error ("Une erreur s'est produite :", error);
         }
     } else {
-        console.log("Suppresion annulée par l'utilisateur.");
+        console.log("Suppression annulée par l'utilisateur.");
     }
 }
 
@@ -128,6 +136,7 @@ const validateBtn = document.getElementById("validateBtn")
 
 validateBtn.addEventListener("click", async function (event) {
     event.preventDefault();
+    event.stopPropagation();
 
     if (addedPhoto.value !== "" && addedTitle.value !== "" && addedCategory.value !== "") {
         if (userToken !== null) {
@@ -138,12 +147,12 @@ validateBtn.addEventListener("click", async function (event) {
                 try {
                     const response = await fetch(`http://localhost:5678/api/works`, {
                         method: "POST",
-                        headers: {"Autorization": `Bearer ${token}`},
+                        headers: {"Authorization": `Bearer ${token}`},
                         body: new FormData(form)
                     })
                     if (response.ok) {
                         console.log("Succès")
-                        form.rest()
+                        form.reset()
                         imagePreview.src=""
                         imagePreview.style.display="none"
                         gallery.innerHTML=""
@@ -159,6 +168,7 @@ validateBtn.addEventListener("click", async function (event) {
         alert("Veuillez remplir tous les champs");
     }
     }
+    addModal.close()
 });
 
 
@@ -199,6 +209,7 @@ if (userToken !== null) {
 }
 
 function enableEdition() {
+    console.log("enableEdition")
     logOutBtn.classList.remove("offline");
     editionBanner.classList.remove("offline");
     modifyBtn.classList.remove("offline");
@@ -207,6 +218,7 @@ function enableEdition() {
 }
 
 function disableEdition() {
+    console.log('disableEdition')
     window.localStorage.removeItem('userToken');
     logOutBtn.classList.add("offline");
     editionBanner.classList.add("offline");
