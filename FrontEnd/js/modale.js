@@ -47,11 +47,19 @@ btnClose1.addEventListener("click", function(event) {
     addModal.close()
 })
 
-// dialog.addEventListener('click', (event) => {
-//     if (event.target.id !== 'modal::backdrop') {
-//         dialog.close();
-//     }
-// });
+/*ClickOut*/
+window.addEventListener('click', function(event) {
+if(event.target == dialog) {
+    event.preventDefault();
+    dialog.close();}
+})
+
+window.addEventListener('click', function(event) {
+if(event.target == addModal) {
+    event.preventDefault();
+    addModal.close();}
+})
+
 
 /*Add works to modal Gallery */
 let modalWorks = []
