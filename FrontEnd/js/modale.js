@@ -20,6 +20,7 @@ editionBtn.addEventListener("click",function() {
 
 btnAddPhoto.addEventListener("click", function() {
     addModal.showModal()
+    checkInput();
     dialog.close()
 });
 
@@ -30,6 +31,7 @@ const returnModal = document.getElementById("return")
 returnModal.addEventListener("click", function() {
     dialog.showModal()
     addModal.close()
+    form.reset()
     getWorksModal()
 })
 
@@ -45,6 +47,7 @@ btnClose.addEventListener("click", function(event) {
 btnClose1.addEventListener("click", function(event) {
     event.preventDefault();
     addModal.close()
+    form.reset()
 })
 
 /*ClickOut*/
@@ -57,7 +60,8 @@ if(event.target == dialog) {
 window.addEventListener('click', function(event) {
 if(event.target == addModal) {
     event.preventDefault();
-    addModal.close();}
+    addModal.close();
+    form.reset();}
 })
 
 
@@ -201,6 +205,56 @@ imageInput.addEventListener("change", function() {
         reader.readAsDataURL(selectedFile)
     }
 })
+
+/*activate validateBtn */
+validateBtn.disabled= true;
+const titleInput = document.getElementById("addTitle")
+// titleInput.disabled= true;
+const addCategory = document.getElementById('addCategory')
+// addCategory.disabled= true;
+
+titleInput.addEventListener("keyup", function() {
+    checkInput();
+})
+
+function checkInput() {
+    const imageSelected = imageInput.files[0];
+    const filledTitle = titleInput.value;
+    console.log(filledTitle)
+    const selectedCategory = addCategory.value;
+
+    function activateValidateBtn() {
+        validateBtn.removeAttribute('disabled')
+    }
+
+    function desactivateValidateBtn() {
+        validateBtn.setAttribute('disabled', 'disabled')
+    }
+
+    // function activateTitleInput() {
+    //     titleInput.removeAttribute('disabled')
+    // }
+
+    // function activateAddCategory() {
+    //     addCategory.removeAttribute('disabled')
+    // }
+
+    // if (imageSelected) {
+    //     activateTitleInput();
+    // }
+
+    // if (filledTitle === true) {
+    //     console.log(filledTitle)
+    //     activateAddCategory();
+        
+    // }
+
+    if (imageSelected && filledTitle && selectedCategory) {
+        activateValidateBtn();
+    } else {
+        desactivateValidateBtn();
+    }
+}
 
 
 /*edition mode*/
