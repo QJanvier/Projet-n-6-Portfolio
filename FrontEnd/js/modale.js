@@ -24,6 +24,11 @@ btnAddPhoto.addEventListener("click", function() {
     dialog.close()
 });
 
+function emptyForm () {
+    form.reset();
+    addedCategory.selectedIndex = -1;
+    document.getElementById("selectedFile").style.display = "none";
+}
 
 /*return modal */
 const returnModal = document.getElementById("return")
@@ -31,7 +36,7 @@ const returnModal = document.getElementById("return")
 returnModal.addEventListener("click", function() {
     dialog.showModal()
     addModal.close()
-    form.reset()
+    emptyForm()
     getWorksModal()
 })
 
@@ -47,7 +52,7 @@ btnClose.addEventListener("click", function(event) {
 btnClose1.addEventListener("click", function(event) {
     event.preventDefault();
     addModal.close()
-    form.reset()
+    emptyForm()
 })
 
 /*ClickOut*/
@@ -61,7 +66,7 @@ window.addEventListener('click', function(event) {
 if(event.target == addModal) {
     event.preventDefault();
     addModal.close();
-    form.reset();}
+    emptyForm();}
 })
 
 
@@ -185,17 +190,16 @@ validateBtn.addEventListener("click", async function (event) {
 
 
 /*change input style */
-const imageInput = document.getElementById("addPhoto")
 const selectFile = document.getElementById("btnSelectFile")
 const imagePreview = document.getElementById("selectedFile")
 
 selectFile.addEventListener("click", function(event) {
     event.preventDefault()
-    imageInput.click()
+    addedPhoto.click()
 })
 
-imageInput.addEventListener("change", function() {
-    const selectedFile = imageInput.files[0]
+addedPhoto.addEventListener("change", function() {
+    const selectedFile = addedPhoto.files[0]
     if(selectedFile) {
         const reader = new FileReader();
         reader.onload = function(event) {
@@ -209,20 +213,15 @@ imageInput.addEventListener("change", function() {
 /*activate validateBtn */
 validateBtn.disabled= true;
 const titleInput = document.getElementById("addTitle")
-// titleInput.disabled= true;
 const addCategory = document.getElementById('addCategory')
-// addCategory.disabled= true;
 
-titleInput.addEventListener("keyup", function() {
-    checkInput();
-})
+addedCategory.selectedIndex = -1;
+addedPhoto.addEventListener("input", checkInput);
+titleInput.addEventListener("input", checkInput);
+addCategory.addEventListener("input", checkInput);
 
 function checkInput() {
-    const imageSelected = imageInput.files[0];
-    const filledTitle = titleInput.value;
-    console.log(filledTitle)
-    const selectedCategory = addCategory.value;
-
+    
     function activateValidateBtn() {
         validateBtn.removeAttribute('disabled')
     }
@@ -231,25 +230,7 @@ function checkInput() {
         validateBtn.setAttribute('disabled', 'disabled')
     }
 
-    // function activateTitleInput() {
-    //     titleInput.removeAttribute('disabled')
-    // }
-
-    // function activateAddCategory() {
-    //     addCategory.removeAttribute('disabled')
-    // }
-
-    // if (imageSelected) {
-    //     activateTitleInput();
-    // }
-
-    // if (filledTitle === true) {
-    //     console.log(filledTitle)
-    //     activateAddCategory();
-        
-    // }
-
-    if (imageSelected && filledTitle && selectedCategory) {
+    if (addedPhoto.value !== "" && addedTitle.value !== "" && addedCategory.value !== "") {
         activateValidateBtn();
     } else {
         desactivateValidateBtn();
