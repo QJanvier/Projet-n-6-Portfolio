@@ -20,9 +20,15 @@ editionBtn.addEventListener("click",function() {
 
 btnAddPhoto.addEventListener("click", function() {
     addModal.showModal()
+    checkInput();
     dialog.close()
 });
 
+function emptyForm () {
+    form.reset();
+    addedCategory.selectedIndex = -1;
+    document.getElementById("selectedFile").style.display = "none";
+}
 
 /*return modal */
 const returnModal = document.getElementById("return")
@@ -30,6 +36,7 @@ const returnModal = document.getElementById("return")
 returnModal.addEventListener("click", function() {
     dialog.showModal()
     addModal.close()
+    emptyForm()
     getWorksModal()
 })
 
@@ -45,6 +52,7 @@ btnClose.addEventListener("click", function(event) {
 btnClose1.addEventListener("click", function(event) {
     event.preventDefault();
     addModal.close()
+    emptyForm()
 })
 
 /*ClickOut*/
@@ -57,7 +65,8 @@ if(event.target == dialog) {
 window.addEventListener('click', function(event) {
 if(event.target == addModal) {
     event.preventDefault();
-    addModal.close();}
+    addModal.close();
+    emptyForm();}
 })
 
 
@@ -181,17 +190,16 @@ validateBtn.addEventListener("click", async function (event) {
 
 
 /*change input style */
-const imageInput = document.getElementById("addPhoto")
 const selectFile = document.getElementById("btnSelectFile")
 const imagePreview = document.getElementById("selectedFile")
 
 selectFile.addEventListener("click", function(event) {
     event.preventDefault()
-    imageInput.click()
+    addedPhoto.click()
 })
 
-imageInput.addEventListener("change", function() {
-    const selectedFile = imageInput.files[0]
+addedPhoto.addEventListener("change", function() {
+    const selectedFile = addedPhoto.files[0]
     if(selectedFile) {
         const reader = new FileReader();
         reader.onload = function(event) {
@@ -201,6 +209,33 @@ imageInput.addEventListener("change", function() {
         reader.readAsDataURL(selectedFile)
     }
 })
+
+/*activate validateBtn */
+validateBtn.disabled= true;
+const titleInput = document.getElementById("addTitle")
+const addCategory = document.getElementById('addCategory')
+
+addedCategory.selectedIndex = -1;
+addedPhoto.addEventListener("input", checkInput);
+titleInput.addEventListener("input", checkInput);
+addCategory.addEventListener("input", checkInput);
+
+function checkInput() {
+    
+    function activateValidateBtn() {
+        validateBtn.removeAttribute('disabled')
+    }
+
+    function desactivateValidateBtn() {
+        validateBtn.setAttribute('disabled', 'disabled')
+    }
+
+    if (addedPhoto.value !== "" && addedTitle.value !== "" && addedCategory.value !== "") {
+        activateValidateBtn();
+    } else {
+        desactivateValidateBtn();
+    }
+}
 
 
 /*edition mode*/

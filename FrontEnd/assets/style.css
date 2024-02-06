@@ -516,8 +516,46 @@ footer nav ul {
 	height: 36px;
 }
 
+#validateBtn:disabled {
+		width: 237px;
+		height: 36px;
+		flex-shrink: 0;
+		border-radius: 60px;
+		background: #A7A7A7;
+		color: #FFF;
+		text-align: center;
+		font-family: 'Syne';
+		font-size: 14px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: normal;
+		margin-top: 32px;
+		border: none;
+		cursor: not-allowed;
+}
+
 #validateBtn {
-	background-color: #A7A7A7;
+	width: 237px;
+	height: 36px;
+	flex-shrink: 0;
+	border-radius: 60px ;
+	background-color: #1D6154;
+	color: #FFF;
+	text-align: center;
+	font-family: 'Syne';
+	font-size: 14px;
+	font-weight: 700;
+	cursor: pointer;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	margin-top: 32px;
+	border: none;
+	font-family: 'Syne';
+	font-weight: 700;
+	margin : 2em auto;
+	margin-top: 32px;
 }
 
 hr {
