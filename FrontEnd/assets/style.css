@@ -106,13 +106,14 @@ nav li {
 nav img {
 	height: 22px;
 	width: 22px;
-	
 }
 
 a:hover,
 li:hover {
 	font-weight: 700;
 }
+
+
 #introduction {
 	display: flex;
 	align-items: center;
@@ -143,9 +144,11 @@ li:hover {
 
 .projects {
 	margin-top: 150px;
+	padding-bottom: 20px;
 }
 .gallery {
 	width: 100%;
+	padding-top: 50px;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
@@ -154,7 +157,6 @@ li:hover {
 
 .gallery img {
 	width: 100%;
-
 }
 
 #contact {
@@ -223,8 +225,7 @@ footer nav ul {
 .filters {
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	padding: 35px 0px 50px 0px;
+	justify-content: center;	
 	gap: 15px;
 	width: 100%;
 }
@@ -303,6 +304,10 @@ footer nav ul {
 	color: red;
 	font-weight: bold;
 	text-align: center;
+}
+
+.mdpReset {
+	text-decoration: underline;
 }
 
 /*edition*/
@@ -534,6 +539,10 @@ footer nav ul {
 		cursor: not-allowed;
 }
 
+#validateBtn:disabled:hover {
+	background-color: #A7A7A7;
+}
+
 #validateBtn {
 	width: 237px;
 	height: 36px;
@@ -556,6 +565,10 @@ footer nav ul {
 	font-weight: 700;
 	margin : 2em auto;
 	margin-top: 32px;
+}
+
+#validateBtn:hover {
+	background-color: #0E2F28;
 }
 
 hr {
