@@ -240,8 +240,8 @@ function checkInput() {
 
 /*edition mode*/
 const userToken = window.localStorage.getItem("userToken");
-const logOutBtn = document.querySelector(".logOutBtn");
-const loginBtn = document.querySelector(".loginBtn");
+const logOutBtn = document.querySelector(".switchBtnLogout");
+const loginBtn = document.querySelector(".switchBtnLogin");
 const editionBanner = document.querySelector(".edition");
 const filterDiv = document.querySelector(".filters");
 const modifyBtn = document.querySelector(".modify");
