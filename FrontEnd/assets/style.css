@@ -233,10 +233,8 @@ footer nav ul {
 .filters button {
 	font-family: 'Syne';
 	font-weight: 700;
-	font-size: 1.2em;
-	color: #1D6154;
+	font-size: 1.2em;	
 	cursor: pointer;
-	background-color: white;
 	text-align: center;
 	border-radius: 60px;
 	border: 1px solid #1D6154;
@@ -244,6 +242,11 @@ footer nav ul {
 	height: 50px;
 	width: auto;
 	padding: 0px 30px;
+}
+
+.filters .btn {
+	color: #1D6154;
+	background-color: white;
 }
 
 .filters button:hover {
@@ -402,6 +405,7 @@ footer nav ul {
 	display: flex;
 	flex-wrap: wrap;
 	margin: 0 50px 70px 50px;
+	padding: 16px;
 }
 
 #modalGallery img {

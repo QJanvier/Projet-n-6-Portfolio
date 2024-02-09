@@ -186,6 +186,7 @@ validateBtn.addEventListener("click", async function (event) {
     }
     }
     addModal.close()
+    emptyForm()
 });
 
 
@@ -252,7 +253,6 @@ if (userToken !== null) {
 }
 
 function enableEdition() {
-    console.log("enableEdition")
     logOutBtn.classList.remove("offline");
     editionBanner.classList.remove("offline");
     modifyBtn.classList.remove("offline");
@@ -260,8 +260,7 @@ function enableEdition() {
     filterDiv.classList.add("offline");
 }
 
-function disableEdition() {
-    console.log('disableEdition')
+function disableEdition() {    
     window.localStorage.removeItem('userToken');
     logOutBtn.classList.add("offline");
     editionBanner.classList.add("offline");
