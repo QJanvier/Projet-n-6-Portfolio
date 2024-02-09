@@ -23,7 +23,6 @@ const getWorks = () => {
             return res.json();
         })
         .then(data => {
-            console.log(data)
             data.forEach(work => {/*insert images*/
                 const container = document.querySelector(".gallery");
                 const figureCreate = document.createElement("figure");
@@ -49,7 +48,7 @@ async function getFilters() {
     const container = document.querySelector(".filters");
     category.forEach(filters => {
     const allFilters = document.createElement("button");
-    allFilters.classList = `filterbtn btn${filters.id}`;
+    allFilters.classList = `filterbtn btn btn${filters.id}`;
     allFilters.setAttribute("id", filters.id);
     allFilters.innerHTML = filters.name;
     container.appendChild(allFilters); 
@@ -64,11 +63,13 @@ async function getFilters() {
 getFilters()
 
 const btnAll = document.querySelector('.btnAll')/*filter All*/
-btnAll.addEventListener("click", () => {
+
+btnAll.addEventListener("click", (event) => {
     gallery.innerHTML=""
-    resetFilter()
+    resetFilter();
     btnAll.classList.add("active")
-    getWorks()
+    btnAll.classList.remove("btn")
+    getWorks();
 })
 
 async function applyFilter (filtersID) {
@@ -76,8 +77,8 @@ async function applyFilter (filtersID) {
         gallery.innerHTML = "";
         resetFilter();
         const btn = document.querySelector(`.btn${filtersID}`);
-        console.log(btn)
-        btn.classList.add(".active");
+        btn.classList.add("active");
+        btn.classList.remove("btn");
         const filteredWorks = works.filter(function (work) {
             return work.categoryId === filtersID;
         });
@@ -87,15 +88,15 @@ async function applyFilter (filtersID) {
             figure.innerHTML=`
             <img src="${element.imageUrl}" alt="${element.title}"
             <figcaption>${element.title}</figcaption>`;
-            gallery.appendChild(figure);  
+            gallery.appendChild(figure);
         }
 }
 
 /*off active class*/ 
-const resetFilter = () => {
-    const filters = document.getElementsByClassName("filters");
-    for (let i = 0; i < filters.length; i++) {
-        const child = filters[i]
-        child.classList.remove("active")
-    }
+async function resetFilter () {
+    const child = document.querySelectorAll('.filterbtn');
+    child.forEach(element => {
+        element.classList.remove("active"); 
+        element.classList.add("btn")
+    });    
 }
