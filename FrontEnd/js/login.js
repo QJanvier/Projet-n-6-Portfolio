@@ -28,7 +28,7 @@ form.addEventListener("submit", async function (event) {
         const userTokenValue = JSON.stringify(userToken)
         window.localStorage.setItem("userToken",userTokenValue)
         console.log(window.localStorage.getItem("userToken"))
-        window.location.href="index.html"
+        window.location.href="/./index.html"
     }
     else if (loginResponse.status==404) {
         error.innerText="ERREUR aucun utilisateur trouvé"
